@@ -1,0 +1,10 @@
+caer
+canaro
+numpy
+opencv-python
+matplotlib
+tensorflow
+scikit-learn
+keras
+requests-html
+beautifulsoup4

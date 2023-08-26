@@ -9,13 +9,13 @@ from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 import cv2 as cv
 
-species = ["Branching", "Encrusting", "Favia", "Favites"]
+species = ["Acropora", "Encrusting", "Favia", "Favites"]
 session = HTMLSession()
 
 def get_species_images(search):
     body = requests.get("http://www.coralsoftheworld.org/species_factsheets/").content
     soup = BeautifulSoup(body, "html.parser")
-    children = soup.find("optgroup", label=search).contents
+    children = soup.find("content-container", label=search).contents
 
     if not os.path.exists(f"images/{search}"):
         os.mkdir(f"images/{search}")
@@ -77,5 +77,5 @@ if not os.path.exists("processed_images"):
     os.mkdir("processed_images")
 
 for s in species:
-    # get_species_images(s)
+    get_species_images(s)
     process_images(s)
